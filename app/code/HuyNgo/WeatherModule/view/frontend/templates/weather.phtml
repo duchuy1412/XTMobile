@@ -1,0 +1,35 @@
+<?php
+/** @var \HuyNgo\WeatherModule\Block\WeatherBlock $block */
+?>
+<?php
+    $result = $block->getWeatherInformation();
+    $place = $result['name'];
+    $main = $result->weather[0]['main'];
+    $description = $result->weather[0]['description'];
+    $temp = $result->main['temp'];
+    $temp_min = $result->main['temp_min'];
+    $temp_max = $result->main['temp_max'];
+    $umid = $result->main['humidity'];
+    $feels_like = $result->main['feels_like'];
+    $icon = $result->weather[0]['icon'];
+    $pressure = $result->main['pressure'];
+    $windspeed = $result->wind['speed'];
+?>
+<h1 id="label_try"><?php echo $block->getLabel(); ?> </h1>
+
+<button id="weather_button">Show Weather</button>
+<div id="show_weather"><h1>Testing</h1></div>
+<script type="text/javascript">
+    require(["jquery"],function($) {
+        $(document).ready(function() {
+            $('#weather_button').click(function(){
+                var info = '<?php echo '<h2>'."Thời tiết hiện tại của $place là $description." . '</h2>'.'<br>' .
+                    "Nhiệt độ hiện tại là $temp °C <br>Nhiệt độ thấp nhất là $temp_min °C, nhiệt độ cao nhất là $temp_max °C." . '<br>' .
+                    "Độ ẩm là $umid%"; ?>';
+
+                $('#show_weather').html(info);
+            });
+        });
+    });
+</script>
+
