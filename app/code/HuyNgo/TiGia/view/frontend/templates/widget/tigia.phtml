@@ -1,0 +1,47 @@
+<?php
+/** @var \HuyNgo\TiGia\Block\TigiaBlock $block */
+?>
+
+<?php
+    $result = $block->getTigiaInformation();
+    $time = $result->DateTime;
+    $data = $result->Exrate;
+    $source = $result->Source;
+    // $exrate = $result->Exrate[0]['@attributes']['CurrencyCode'];
+?>
+<?php if($block->getData('widgettitle')): ?>
+            <h2 id='exchange-rate-title' style="text-align: center;"><?php echo $block->getData('widgettitle'); ?></h2>
+<?php endif; ?>
+
+<div id="show_exchangerate"></div>
+<table style="width: 500px; margin: auto;">
+    <thead>
+        <tr>
+            <th>Mã</th>
+            <th>Tên</th>
+            <th style="color: green;">Mua</th>
+            <th style="color: blue;">Bán</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach($data as $key => $value): ?>
+    <tr>
+        <td><?php echo $value['@attributes']['CurrencyCode']; ?></td>
+        <td><?php echo $value['@attributes']['CurrencyName']; ?></td>
+        <td style="color: green;"><?php echo $value['@attributes']['Buy']; ?></td>
+        <td style="color: blue;"><?php echo $value['@attributes']['Sell']; ?></td>
+    </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    require(["jquery"],function($) {
+        $(document).ready(function() {
+            
+                var info = '<?php echo "Cập nhật: $time (Nguồn: $source)"; ?>';
+
+                $('#show_exchangerate').html(info);
+        });
+    });
+</script>

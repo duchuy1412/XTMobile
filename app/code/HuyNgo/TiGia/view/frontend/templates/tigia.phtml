@@ -1,0 +1,18 @@
+<?php
+    $result = $block->getIigiaInformation();
+?>
+<?php if($block->getData('widgettitle')): ?>
+            <h2 id='exchange-rate-title'><?php echo $block->getData('widgettitle'); ?></h2>
+<?php endif; ?>
+
+<div id="show_exchangerate"><h1>Exchange rate</h1></div>
+<script type="text/javascript">
+    require(["jquery"],function($) {
+        $(document).ready(function() {
+                var info = '<?php echo "result: $result"; ?>';
+
+                $('#show_exchangerate').html(info);
+        });
+    });
+</script>
+
