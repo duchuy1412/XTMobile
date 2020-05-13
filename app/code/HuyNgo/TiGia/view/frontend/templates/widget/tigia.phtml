@@ -1,19 +1,14 @@
 <?php
-/** @var \HuyNgo\TiGia\Block\TigiaBlock $block */
-?>
-
-<?php
     $result = $block->getTigiaInformation();
     $time = $result->DateTime;
     $data = $result->Exrate;
     $source = $result->Source;
-    // $exrate = $result->Exrate[0]['@attributes']['CurrencyCode'];
 ?>
 <?php if($block->getData('widgettitle')): ?>
             <h2 id='exchange-rate-title' style="text-align: center;"><?php echo $block->getData('widgettitle'); ?></h2>
 <?php endif; ?>
 
-<div id="show_exchangerate"></div>
+<div id="show_exchangerate"  style="text-align: center;"></div>
 <table style="width: 500px; margin: auto;">
     <thead>
         <tr>
