@@ -1,0 +1,25 @@
+<?php 
+    $weather = $block->getWeather();
+    $icon = $weather->getIcon();
+?>
+
+<?php if(null !== $weather): ?>
+    <h2>Thời tiết tại <?php echo $weather->getPlace(); ?></h2>
+<p>cập nhật lúc <?php echo $weather->getCreatedAt(); ?></p>
+<hr>
+<ul>
+    <li>Thời tiết: <strong><?php echo $weather->getDescription(); ?></strong><br><?php echo "<img id='wicon' src='http://openweathermap.org/img/w/$icon.png' alt='Weather icon'>" ?></li>
+    <li>Nhiệt độ: <strong><?php echo $weather->getTemperature(); ?>℃</strong></li>
+    <li>Cảm giác như: <strong><?php echo $weather->getFeelsLike(); ?>℃</strong></li>
+    <li>Nhiệt độ thấp nhất: <strong><?php echo $weather->getTemperatureMin(); ?>℃</strong></li>
+    <li>Nhiệt độ cao nhất: <strong><?php echo $weather->getTemperatureMax(); ?>℃</strong></li>
+    <li>Áp suất : <strong><?php echo $weather->getPressure(); ?>hPa</strong></li>
+    <li>Độ ẩm: <strong><?php echo $weather->getHumidity(); ?>%</strong></li>  
+</ul>
+
+<?php else: ?>
+<h2>Data not found</h2>
+<?php endif; ?>
+
+
+

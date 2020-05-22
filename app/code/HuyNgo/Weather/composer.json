@@ -1,0 +1,24 @@
+{
+    "name": "HuyNgo/Weather",
+    "description": "Magento 2 Weather",
+    "require": {
+      "php": ">=5.2.0"
+    },
+    "type": "magento2-module",
+    "version": "1.0.3",
+    "authors": [
+      {
+        "name": "HuyNgo",
+        "email": "ngohuy99bn@gmail.com"
+      }
+    ],
+    "autoload": {
+      "files": [
+        "registration.php"
+      ],
+      "psr-4": {
+        "HuyNgo\\Weather\\": ""
+      }
+    }
+  }
+  
