@@ -26,7 +26,7 @@ class Tigia
     private $jsonHelper;
 
     /**
-     * Weather constructor.
+     * Tigia constructor.
      * @param \Magento\Framework\HTTP\Client\CurlFactory $curlFactory
      * @param Http $http
      * @param \Magento\Framework\Json\Helper\Data $jsonHelper

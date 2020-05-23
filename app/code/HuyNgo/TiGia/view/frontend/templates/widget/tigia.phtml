@@ -1,43 +1,49 @@
 <?php
-    $result = $block->getTigiaInformation();
-    $time = $result->DateTime;
-    $data = $result->Exrate;
-    $source = $result->Source;
+    $result = $block->getTiGia();
+
+    $vcb = $result->getVcb();
 ?>
 <?php if($block->getData('widgettitle')): ?>
             <h2 id='exchange-rate-title'><?php echo $block->getData('widgettitle'); ?></h2>
+<?php else: ?>
+            <h2 id='exchange-rate-title'>Exchange Rate</h2>
 <?php endif; ?>
 
-<div id="show_exchangerate"></div>
+<div id="date-time"></div>
 <hr>
-<table style="width: 500px; margin: auto;">
+<div id="exchange-rate-info">
+<table id="myTable" style="width: 500px; margin: auto;">
     <thead>
         <tr>
             <th>Mã</th>
             <th>Tên</th>
             <th style="color: green;">Mua</th>
+            <th>Chuyển đổi</th>
             <th style="color: blue;">Bán</th>
         </tr>
     </thead>
     <tbody>
-    <?php foreach($data as $key => $value): ?>
-    <tr>
-        <td><?php echo $value['@attributes']['CurrencyCode']; ?></td>
-        <td><?php echo $value['@attributes']['CurrencyName']; ?></td>
-        <td style="color: green;"><?php echo $value['@attributes']['Buy']; ?></td>
-        <td style="color: blue;"><?php echo $value['@attributes']['Sell']; ?></td>
-    </tr>
-    <?php endforeach; ?>
     </tbody>
 </table>
+</div>
 
 <script type="text/javascript">
     require(["jquery"],function($) {
         $(document).ready(function() {
-            
-                var info = '<?php echo "Cập nhật: $time (Nguồn: $source)"; ?>';
+            const json = '<?php echo $vcb ?>';
+            const result = JSON.parse(json);
+            const datetime = result.DateTime;
+            const exrate = result.Exrate;
 
-                $('#show_exchangerate').html(info);
+            for (let i = 0; i < exrate.length; ++i) {
+                const content = exrate[i]['@attributes'];
+                let td = "";
+                $.each(content, function( key, value ) {
+                    td = td + '<td>' + value + '</td>';
+                });
+                $('#myTable > tbody:last-child').append('<tr>' + td + '</tr>');
+            }
+                $('#date-time').html(datetime);
         });
     });
 </script>
