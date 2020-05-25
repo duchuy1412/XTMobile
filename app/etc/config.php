@@ -237,6 +237,7 @@ return [
         'Amazon_Payment' => 1,
         'Dotdigitalgroup_Email' => 1,
         'Dotdigitalgroup_Chat' => 1,
+        'HuyNgo_CustomerChatbox' => 1,
         'HuyNgo_ExchangeRate' => 1,
         'HuyNgo_TiGia' => 1,
         'HuyNgo_Weather' => 1,
