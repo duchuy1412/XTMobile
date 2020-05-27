@@ -1,0 +1,74 @@
+<?php
+    $resultTintuc = $block->getTinTuc();
+
+    $nnews = $resultTintuc->getNews();
+?>
+<?php if($block->getData('widgettitle')): ?>
+            <h2 id='widget-news-title'><?php echo $block->getData('widgettitle'); ?></h2>
+<?php else: ?>
+            <h2 id='widget-news-title'>News</h2>
+<?php endif; ?>
+<hr>
+<div id="news-info">
+<table id="newsTable" style="width: auto; margin: auto;">
+    <tbody>
+   
+<?php
+
+$max_feed=15;
+$items_per_row=5;
+
+$date =""; 
+
+$feed_count=0; 
+
+$feed = new DOMDocument();
+
+$feed->loadXML($nnews);
+
+foreach ($feed->getElementsByTagName('item') as $key=>$node) {
+
+    $title = $node->getElementsByTagName('title')->item(0)->nodeValue;
+
+    $desc  = $node->getElementsByTagName('description')->item(0)->nodeValue; 
+
+    $link = $node->getElementsByTagName('link')->item(0)->nodeValue; 
+
+    if (($node->getElementsByTagName('pubDate')->length) >0) { // To eliminate non-object error in PHP 
+
+    $date = $node->getElementsByTagName('pubDate')->item(0)->nodeValue; 
+
+    } 
+
+    //if item is a first element of row, then start a row
+    if($key%$items_per_row == 0){
+        echo '<tr>';
+    }
+
+
+    echo '<td>';
+    echo '<a href="'.$link.'"><b>'.$title.'</b></a></br></br>'; 
+
+    echo ''. $desc . '<br>';
+
+    echo '</td>';
+
+    //if item is a last element of row, end a row
+    if($key%$items_per_row == ($items_per_row-1)){
+        echo '</tr>';
+    };
+    
+
+    $feed_count +=1;
+
+    if ($feed_count >= $max_feed) {
+
+    break; 
+
+    }
+
+ }
+?>
+ </tbody>
+</table>
+</div>

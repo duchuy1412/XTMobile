@@ -240,6 +240,7 @@ return [
         'HuyNgo_CustomerChatbox' => 1,
         'HuyNgo_ExchangeRate' => 1,
         'HuyNgo_TiGia' => 1,
+        'HuyNgo_TinTuc' => 1,
         'HuyNgo_Weather' => 1,
         'Klarna_Core' => 1,
         'Klarna_Ordermanagement' => 1,
