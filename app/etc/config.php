@@ -232,6 +232,7 @@ return [
         'Magento_Wishlist' => 1,
         'Magento_WishlistAnalytics' => 1,
         'Magento_WishlistGraphQl' => 1,
+        'API_GetProductById' => 1,
         'Amazon_Core' => 1,
         'Amazon_Login' => 1,
         'Amazon_Payment' => 1,
@@ -250,6 +251,7 @@ return [
         'Temando_ShippingRemover' => 1,
         'Vertex_Tax' => 1,
         'Vertex_AddressValidation' => 1,
+        'Vnpayment_VNPAY' => 1,
         'Yotpo_Yotpo' => 1
     ]
 ];
