@@ -5,7 +5,7 @@
 
 <?php if(null !== $weather): ?>
     <h2>Thời tiết tại <?php echo $weather->getPlace(); ?></h2>
-<p>cập nhật lúc <?php echo $weather->getCreatedAt(); ?></p>
+<!-- <p>cập nhật lúc <?php echo $weather->getCreatedAt(); ?></p> -->
 <hr>
 <ul>
     <li>Thời tiết: <strong><?php echo $weather->getDescription(); ?></strong><br><?php echo "<img id='wicon' src='http://openweathermap.org/img/w/$icon.png' alt='Weather icon'>" ?></li>
